@@ -3,7 +3,18 @@ import { GetServerSideProps } from 'next';
 
 type PageProps = {
   error: boolean;
-  data: any | null;
+  data: {
+    ipAddress: string;
+    location: {
+      latitude: number;
+      longitude: number;
+    };
+    city: string;
+    area: string;
+    country: string;
+    isp: string;
+    timezone: string;
+  } | null;
   ipAddress: string | null;
 };
 
