@@ -1,7 +1,6 @@
 import React from 'react'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
-import Layout from '@/components/Layout/Layout'
 import '@/styles/globals.scss'
 
 const App: React.FC<AppProps> = ({ Component, pageProps }) => {
@@ -27,9 +26,7 @@ const App: React.FC<AppProps> = ({ Component, pageProps }) => {
           />
         ))}
       </Head>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      <Component {...pageProps} />
     </>
   )
 }
