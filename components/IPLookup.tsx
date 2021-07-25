@@ -18,6 +18,7 @@ import { ChevronDownIcon, SearchIcon } from '@chakra-ui/icons';
 import Info from './Info';
 import { FormEvent } from 'react';
 import axios from 'axios';
+import ExpandedDetail from './ExpandedDetail';
 // import Image from 'next/image';
 
 const IPLookup = () => {
@@ -124,14 +125,16 @@ const IPLookup = () => {
         alignItems="center"
         bottom="0"
         background="white"
-        p={8}
+        p={{ base: 4, md: 8 }}
         borderRadius={5}
         gridGap={5}
-        transform="translateY(50%)"
+        transform={{ base: 'translateY(75%)', md: 'translateY(50%)' }}
         zIndex="10001"
         boxShadow="lg"
+        width={{ base: 'calc(100% - 4rem)', md: 'auto' }}
+        maxWidth={{ base: '32.5rem', md: 'initial' }}
       >
-        <Flex>
+        <Flex direction={{ base: 'column', md: 'row' }} gridRowGap="0.25rem">
           <Info title="IP Address" details={data?.ip} />
           <Info title="ISP" details={isp} />
           <Info title="Location" details={location} />
@@ -143,34 +146,34 @@ const IPLookup = () => {
               position="absolute"
               background="white"
               top="0"
-              left="-2rem"
-              right="-2rem"
-              p="0 2rem 2rem"
+              left={{ base: '-1rem', md: '-2rem' }}
+              right={{ base: '-1rem', md: '-2rem' }}
+              p={{ base: '0 1rem 1rem', md: '0 2rem 2rem' }}
               flexDirection="column"
               boxShadow="lg"
               borderRadius={5}
             >
               <Collapse in={expandDetails}>
                 <Flex flexDirection="column" mb="2rem" gridGap="0.25rem">
-                  {/* // TODO: Move these to their own component file */}
-                  <div>IP Address Type: {data.type}</div>
-                  <div>Latitude: {data.location.latitude}</div>
-                  <div>Longitude: {data.location.longitude}</div>
-                  <div>City: {data.city.name || 'Not Found'}</div>
-                  <div>Region: {data.area.name || 'Not Found'}</div>
-                  <div>
-                    Country: {data.country.name || 'Not Found'}
-                    {data.country.flag.file && (
-                      <Image
-                        src={data.country.flag.file}
-                        display="inline"
-                        ml="0.5rem"
-                        width={30}
-                        alt={`Flag of ${data.country.name}`}
-                      />
-                    )}
-                  </div>
-                  <div>Time Zone: {`${data.time.timezone} (${timeZone})` || 'Not Found'}</div>
+                  <ExpandedDetail title="IP Address Type" details={data.type} />
+                  <ExpandedDetail title="Latitude" details={data.location.latitude} />
+                  <ExpandedDetail title="Longitude" details={data.location.longitude} />
+                  <ExpandedDetail title="City" details={data.city.name} />
+                  <ExpandedDetail title="Region" details={data.area.name} />
+                  <ExpandedDetail
+                    title="Country"
+                    details={
+                      data.country.name ? (
+                        <Flex alignItems="center" gridGap="0.25rem">
+                          <p>{data.country.name}</p>
+                          {data.country.flag.file && (
+                            <Image src={data.country.flag.file} width={30} alt={`Flag of ${data.country.name}`} />
+                          )}
+                        </Flex>
+                      ) : null
+                    }
+                  />
+                  <ExpandedDetail title="Time Zone" details={data.time.timezone} />
                 </Flex>
               </Collapse>
               <Button
