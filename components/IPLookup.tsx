@@ -10,6 +10,13 @@ const IPLookup = () => {
   const location = useMemo(() => {
     return data?.city.name;
   }, [data]);
+  const timeZone = useMemo(() => {
+    if (data) {
+      return `${data}`;
+    } else {
+      return null;
+    }
+  }, [data]);
 
   return (
     <Flex height="35vh" background="grey" p={8} justifyContent="center" position="relative">
