@@ -34,6 +34,21 @@
   background-image: linear-gradient(to right, #4a40bf, #6186f5) !important;
 
   &:hover {
-    opacity: 0.9;
+    opacity: 0.8;
   }
+}
+
+.info-container {
+  padding: 0 2rem;
+
+  &:first-child {
+    padding-left: 0;
+  }
+
+  &:last-child {
+    padding-right: 0;
+  }
+}
+.info-container + .info-container {
+  border-left: solid 1px #ededed;
 }

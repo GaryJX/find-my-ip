@@ -5,7 +5,7 @@ const Info: React.FC<{ title: string; details: React.ReactNode }> = ({ title, de
   details = details ?? 'Not Found';
 
   return (
-    <div>
+    <div className="info-container">
       <Heading fontSize="0.75rem" textTransform="uppercase" color="gray.600">
         {title}
       </Heading>
