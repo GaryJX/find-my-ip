@@ -24,6 +24,7 @@ type ApiResponseData = {
     name: string;
   };
   country: {
+    code: string;
     name: string;
     flag: {
       file: string;

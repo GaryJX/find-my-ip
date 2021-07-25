@@ -9,7 +9,7 @@ const Info: React.FC<{ title: string; details: React.ReactNode }> = ({ title, de
       <Heading fontSize="0.75rem" textTransform="uppercase" color="gray.600">
         {title}
       </Heading>
-      <Text fontWeight="bold" fontSize="3xl">
+      <Text fontWeight="bold" fontSize="1.5rem" title={details as string}>
         {details}
       </Text>
     </div>
