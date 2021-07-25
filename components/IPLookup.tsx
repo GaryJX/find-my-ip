@@ -1,26 +1,63 @@
-import { Flex, Heading } from '@chakra-ui/react';
+import { Box, Button, Flex, Heading, IconButton, Input } from '@chakra-ui/react';
 import { GlobalContext } from 'pages';
-import React from 'react';
+import React, { useState } from 'react';
 import { useMemo } from 'react';
 import { useContext } from 'react';
+import { SearchIcon } from '@chakra-ui/icons';
 import Info from './Info';
+import { FormEvent } from 'react';
+import axios from 'axios';
 
 const IPLookup = () => {
-  const data = useContext(GlobalContext);
+  const [input, setInput] = useState('');
+  const { data, setData } = useContext(GlobalContext);
   const location = useMemo(() => {
     return data?.city.name;
   }, [data]);
   const timeZone = useMemo(() => {
     if (data) {
-      return `${data}`;
+      return `${data.time.timezone} (${data.time.time})`;
     } else {
       return null;
     }
   }, [data]);
 
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (input.trim() !== '') {
+      axios
+        .get(`/api/ip/${input}`)
+        .then((response) => {
+          console.log({ response: response.data });
+          setData(response.data);
+        })
+        .catch((error) => {
+          console.error({ error });
+        });
+    }
+  };
+
   return (
-    <Flex height="35vh" background="grey" p={8} justifyContent="center" position="relative">
-      <Heading>Find My IP Address</Heading>
+    <Flex height="35vh" background="white" p={8} flexDirection="column" alignItems="center" position="relative">
+      <Heading mb={8}>Find My IP Address</Heading>
+      <form onSubmit={handleSubmit} style={{ width: '100%' }}>
+        <Flex justifyContent="center">
+          <Input
+            isRequired
+            maxWidth="30rem"
+            borderRightRadius={0}
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+          />
+          <IconButton
+            type="submit"
+            colorScheme="blackAlpha"
+            borderLeftRadius={0}
+            aria-label="Search IP Address"
+            icon={<SearchIcon />}
+          />
+        </Flex>
+      </form>
       <Flex
         position="absolute"
         bottom="0"
