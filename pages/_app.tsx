@@ -16,11 +16,11 @@ const App: React.FC<AppProps> = ({ Component, pageProps }) => {
         />
         {/* // TODO: Add meta tags for better SEO, and maybe PWA eventually? */}
         {/* // TODO: Add Google Analytics for my production site to see how many users visit, and from what devices? */}
-        {[400, 500, 600, 700].map((weight) => (
+        {[400, 600, 700].map((weight) => (
           <link
             key={weight}
             rel="preload"
-            href={`/fonts/poppins-${weight}.woff2`}
+            href={`/fonts/nunito-${weight}.woff2`}
             as="font"
             type="font/woff2"
             crossOrigin="anonymous"

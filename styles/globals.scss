@@ -1,38 +1,30 @@
 @use 'mixins';
 
 /**************** Fonts ****************/
-/* poppins-400 - latin */
+/* nunito-400 - latin */
 @font-face {
-  font-family: 'Poppins';
+  font-family: 'Nunito';
   font-style: normal;
   font-weight: 400;
   font-display: optional;
-  src: url('/fonts/poppins-400.woff2') format('woff2');
+  src: url('/fonts/nunito-400.woff2') format('woff2');
 }
-/* poppins-500 - latin */
+// TODO: Delete font-weight 600 if not used
+/* nunito-600 - latin */
 @font-face {
-  font-family: 'Poppins';
-  font-style: normal;
-  font-weight: 500;
-  font-display: optional;
-  src: url('/fonts/poppins-500.woff2') format('woff2');
-}
-/* poppins-600 - latin */
-@font-face {
-  font-family: 'Poppins';
+  font-family: 'Nunito';
   font-style: normal;
   font-weight: 600;
   font-display: optional;
-  src: url('/fonts/poppins-600.woff2') format('woff2');
+  src: url('/fonts/nunito-600.woff2') format('woff2');
 }
-// TODO: Remove the Poppins 700 weight if I don't need it anywhere in my application
-/* poppins-700 - latin */
+/* nunito-700 - latin */
 @font-face {
-  font-family: 'Poppins';
+  font-family: 'Nunito';
   font-style: normal;
   font-weight: 700;
   font-display: optional;
-  src: url('/fonts/poppins-700.woff2') format('woff2');
+  src: url('/fonts/nunito-700.woff2') format('woff2');
 }
 
 /**************** CSS Variables ****************/
@@ -93,7 +85,7 @@
   --transition-color: 0 linear;
 
   /*********** Fonts ***********/
-  --font-family-body: 'Poppins', 'San Francisco', 'SF Pro Text', -apple-system,
+  --font-family-body: 'Nunito', 'San Francisco', 'SF Pro Text', -apple-system,
     system-ui, sans-serif;
 
   /*********** Padding ***********/
