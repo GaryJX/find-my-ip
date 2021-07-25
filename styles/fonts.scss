@@ -20,3 +20,12 @@
   font-display: optional;
   src: url('/fonts/nunito-700.woff2') format('woff2');
 }
+
+.test {
+  // background-color: #f8f7fd;
+  // background-color: linear-gradient(to right, red, yellow);
+  background-image: linear-gradient(to right, #453e99, #6085f5);
+  background-image: url('https://www.transparenttextures.com/patterns/cartographer.png'),
+    linear-gradient(to right, hsl(245, 50%, 50%), hsl(225, 88%, 67%));
+  /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+}

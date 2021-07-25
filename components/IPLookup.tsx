@@ -38,11 +38,22 @@ const IPLookup = () => {
   };
 
   return (
-    <Flex height="35vh" background="white" p={8} flexDirection="column" alignItems="center" position="relative">
-      <Heading mb={8}>Find My IP Address</Heading>
+    <Flex
+      className="test"
+      height="35vh"
+      // background="#F8F7FD"
+      p={8}
+      flexDirection="column"
+      alignItems="center"
+      position="relative"
+    >
+      <Heading mb={8} color="white">
+        Find My IP Address
+      </Heading>
       <form onSubmit={handleSubmit} style={{ width: '100%' }}>
         <Flex justifyContent="center">
           <Input
+            background="white"
             isRequired
             maxWidth="30rem"
             borderRightRadius={0}
