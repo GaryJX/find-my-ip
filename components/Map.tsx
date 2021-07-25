@@ -1,6 +1,7 @@
 import React from 'react';
 import 'leaflet/dist/leaflet.css';
-import 'leaflet/dist/leaflet';
+import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css';
+import 'leaflet-defaulticon-compatibility';
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 
 const Map = () => {
