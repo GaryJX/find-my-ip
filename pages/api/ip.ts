@@ -9,12 +9,12 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     .then((response) => {
       console.log({ data: response.data })
       console.log({ remoteAddress: req.socket.remoteAddress })
-      res
-        .status(200)
-        .json({
-          responseData: response.data,
-          remoteAddress: req.socket.remoteAddress,
-        })
+      console.log({ forwardedIp: req.headers })
+      res.status(200).json({
+        responseData: response.data,
+        remoteAddress: req.socket.remoteAddress,
+        requestHeaders: req.headers,
+      })
     })
     .catch((error) => {
       console.error({ error: error.response })
