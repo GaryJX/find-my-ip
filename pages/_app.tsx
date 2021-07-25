@@ -1,7 +1,9 @@
-import React from 'react'
-import { AppProps } from 'next/app'
-import Head from 'next/head'
-import '@/styles/globals.scss'
+import React from 'react';
+import { AppProps } from 'next/app';
+import Head from 'next/head';
+import { ChakraProvider } from '@chakra-ui/react';
+
+import '@/styles/globals.scss';
 
 const App: React.FC<AppProps> = ({ Component, pageProps }) => {
   return (
@@ -16,19 +18,14 @@ const App: React.FC<AppProps> = ({ Component, pageProps }) => {
         {/* // TODO: Add meta tags for better SEO, and maybe PWA eventually? */}
         {/* // TODO: Add Google Analytics for my production site to see how many users visit, and from what devices? */}
         {[400, 600, 700].map((weight) => (
-          <link
-            key={weight}
-            rel="preload"
-            href={`/fonts/nunito-${weight}.woff2`}
-            as="font"
-            type="font/woff2"
-            crossOrigin="anonymous"
-          />
+          <link key={weight} rel="preload" href={`/fonts/nunito-${weight}.woff2`} as="font" type="font/woff2" crossOrigin="anonymous" />
         ))}
       </Head>
-      <Component {...pageProps} />
+      <ChakraProvider>
+        <Component {...pageProps} />
+      </ChakraProvider>
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;

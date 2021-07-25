@@ -6,7 +6,7 @@ import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 
 const Map = () => {
   return (
-    <MapContainer center={[43.9016, -79.3427]} zoom={13} scrollWheelZoom={false} style={{ height: '10rem' }}>
+    <MapContainer center={[43.9016, -79.3427]} zoom={13} scrollWheelZoom={false} style={{ flex: 1 }}>
       <TileLayer
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
