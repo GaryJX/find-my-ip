@@ -1,0 +1,18 @@
+.sectionHeader {
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: var(--color-text-heading);
+  display: flex;
+  white-space: nowrap;
+  align-items: center;
+  margin: 0.5rem 0 2.5rem;
+
+  &::after {
+    content: '';
+    background: currentColor;
+    opacity: 0.15;
+    height: 1px;
+    margin-left: 1rem;
+    width: 100%;
+  }
+}

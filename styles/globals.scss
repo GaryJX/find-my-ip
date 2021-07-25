@@ -1,0 +1,214 @@
+@use 'mixins';
+
+/**************** Fonts ****************/
+/* poppins-400 - latin */
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-display: optional;
+  src: url('/fonts/poppins-400.woff2') format('woff2');
+}
+/* poppins-500 - latin */
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-display: optional;
+  src: url('/fonts/poppins-500.woff2') format('woff2');
+}
+/* poppins-600 - latin */
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-display: optional;
+  src: url('/fonts/poppins-600.woff2') format('woff2');
+}
+// TODO: Remove the Poppins 700 weight if I don't need it anywhere in my application
+/* poppins-700 - latin */
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-display: optional;
+  src: url('/fonts/poppins-700.woff2') format('woff2');
+}
+
+/**************** CSS Variables ****************/
+:root {
+  /*********** Colors ***********/
+  // color-scheme: light;
+
+  // Primary Color Hue
+  // TODO: Try out some other hue colors (e.g. ~220 for bluer color?)
+  --hue-color: 175; /*Purple 250 - Green 142 - Blue 230 - Pink 340*/
+
+  // Light Theme colors (Currently not using, I decided to default to dark mode)
+  // --color-primary: hsl(var(--hue-color), 69%, 41%);
+  // --color-primary-darker: hsl(var(--hue-color), 57%, 36%);
+  // --color-primary-lighter: hsl(var(--hue-color), 92%, 85%);
+  // --color-text-heading: hsl(var(--hue-color), 8%, 15%);
+  // --color-text-subheading: hsl(var(--hue-color), 100%, 25%);
+  // --color-text-normal: hsl(var(--hue-color), 8%, 45%);
+  // --color-text-light: hsl(var(--hue-color), 8%, 65%);
+  // --color-input: hsl(var(--hue-color), 70%, 96%);
+  // --color-background: hsl(var(--hue-color), 60%, 99%);
+  // --color-background-alt: hsl(var(--hue-color), 60%, 99%);
+  // --color-container: hsl(0, 0%, 100%);
+  // --color-scroll-bar: hsl(var(--hue-color), 12%, 90%);
+  // --color-scroll-thumb: hsl(var(--hue-color), 12%, 80%);
+  // --color-watermark-1: hsl(var(--hue-color), 60%, 35%);
+  // --color-watermark-2: hsl(var(--hue-color), 60%, 45%);
+  // --color-watermark-3: hsl(var(--hue-color), 60%, 65%);
+  // --color-selection-background: hsl(var(--hue-color), 30%, 30%);
+  // --color-selection-text: hsl(var(--hue-color), 70%, 99%);
+
+  color-scheme: dark;
+
+  --color-primary: hsl(var(--hue-color), 69%, 36%);
+  // TODO: Improve the CSS variable naming convention for the button color
+  --color-primary-button: hsl(var(--hue-color), 57%, 33%);
+  --color-primary-darker: hsl(var(--hue-color), 57%, 30%);
+  --color-primary-lighter: hsl(var(--hue-color), 92%, 85%);
+  --color-text-heading: hsl(var(--hue-color), 8%, 95%);
+  --color-text-subheading: hsl(var(--hue-color), 50%, 50%);
+  --color-text-normal: hsl(var(--hue-color), 8%, 75%);
+  --color-text-light: hsl(var(--hue-color), 8%, 65%);
+  --color-input: hsl(var(--hue-color), 29%, 16%);
+  --color-background: hsl(var(--hue-color), 28%, 12%);
+  --color-background-alt: hsl(var(--hue-color), 28%, 17%);
+  --color-container: hsl(var(--hue-color), 29%, 16%);
+  // --color-scroll-bar: hsl(var(--hue-color), 12%, 48%);
+  --color-scroll-thumb: hsl(var(--hue-color), 12%, 36%);
+  --color-scroll-thumb-hover: hsl(var(--hue-color), 12%, 31%);
+  --color-scroll-thumb-active: hsl(var(--hue-color), 12%, 26%);
+  --color-watermark-1: hsl(var(--hue-color), 40%, 30%);
+  --color-watermark-2: hsl(var(--hue-color), 40%, 40%);
+  --color-watermark-3: hsl(var(--hue-color), 40%, 60%);
+  --color-selection-background: hsl(var(--hue-color), 30%, 90%);
+  --color-selection-text: hsl(var(--hue-color), 70%, 25%);
+
+  // TODO: Maybe consider removing the transition color timing, it doesn't gel well
+  --transition-color: 0 linear;
+
+  /*********** Fonts ***********/
+  --font-family-body: 'Poppins', 'San Francisco', 'SF Pro Text', -apple-system,
+    system-ui, sans-serif;
+
+  /*********** Padding ***********/
+  --body-horizontal-padding: 1.5rem;
+
+  @include mixins.min-mq(md) {
+    --body-horizontal-padding: 3rem;
+  }
+
+  @include mixins.min-mq(lg) {
+    --body-horizontal-padding: 6rem;
+  }
+
+  @include mixins.min-mq(xl) {
+    --body-horizontal-padding: 10rem;
+  }
+}
+
+/**************** Dark Theme ****************/
+
+// body.dark-theme {
+//   color-scheme: dark;
+
+//   --color-primary: hsl(var(--hue-color), 69%, 36%);
+//   --color-primary-darker: hsl(var(--hue-color), 57%, 31%);
+//   // --first-color-second: hsl(var(--hue-color), 30%, 8%);
+//   --color-text-heading: hsl(var(--hue-color), 8%, 95%);
+//   --color-text-subheading: hsl(var(--hue-color), 50%, 50%);
+//   --color-text-normal: hsl(var(--hue-color), 8%, 75%);
+//   --color-input: hsl(var(--hue-color), 29%, 16%);
+//   --color-background: hsl(var(--hue-color), 28%, 12%);
+//   --color-background-alt: hsl(var(--hue-color), 28%, 17%);
+//   --color-container: hsl(var(--hue-color), 29%, 16%);
+//   --color-scroll-bar: hsl(var(--hue-color), 12%, 48%);
+//   --color-scroll-thumb: hsl(var(--hue-color), 12%, 36%);
+//   --color-watermark-1: hsl(var(--hue-color), 40%, 30%);
+//   --color-watermark-2: hsl(var(--hue-color), 40%, 40%);
+//   --color-watermark-3: hsl(var(--hue-color), 40%, 60%);
+//   --color-selection-background: hsl(var(--hue-color), 30%, 90%);
+//   --color-selection-text: hsl(var(--hue-color), 70%, 25%);
+// }
+
+/**************** Base Styles ****************/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+*:focus-visible {
+  outline: var(--color-primary) dashed 2px;
+  outline-offset: 3px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  // margin: 0 0 var(--header-height) 0;
+  // font-size: var(--normal-font-size);
+  font-family: var(--font-family-body);
+  background-color: var(--color-background);
+  color: var(--color-text-normal);
+  transition: background-color var(--transition-color),
+    color var(--transition-color);
+  overflow-x: hidden;
+}
+
+main {
+  padding: 0 var(--body-horizontal-padding);
+
+  section {
+    @include mixins.container;
+  }
+}
+
+button {
+  all: unset;
+  cursor: pointer;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+::selection {
+  background-color: var(--color-selection-background);
+  color: var(--color-selection-text);
+}
+
+::-webkit-scrollbar {
+  width: 0.5rem;
+  // background-color: var(--color-scroll-bar);
+  border-radius: 0.5rem;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-scroll-thumb);
+  border-radius: 0.5rem;
+
+  &:hover {
+    background-color: var(--color-scroll-thumb-hover);
+  }
+
+  &:active {
+    background-color: var(--color-scroll-thumb-active);
+  }
+}

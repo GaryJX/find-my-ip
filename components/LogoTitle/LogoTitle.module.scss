@@ -1,0 +1,39 @@
+@use "../../styles/mixins";
+
+.logoTitle {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+
+  .logoTitleCircle,
+  .logoTitleSvg {
+    height: 40px;
+    width: auto;
+    fill: var(--color-text-heading);
+    stroke: var(--color-text-heading);
+    transition: fill var(--transition-color), stroke var(--transition-color);
+  }
+
+  .logoTitleCircle {
+    margin-right: 0.5rem;
+  }
+
+  .logoTitleSvg {
+    display: none;
+  }
+
+  &:hover,
+  &:focus-visible {
+    .logoTitleCircle,
+    .logoTitleSvg {
+      fill: var(--color-primary);
+      stroke: var(--color-primary);
+    }
+  }
+
+  @include mixins.min-mq(sm) {
+    .logoTitleSvg {
+      display: block;
+    }
+  }
+}
