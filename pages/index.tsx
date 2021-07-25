@@ -1,5 +1,7 @@
 import axios from 'axios';
 import { GetServerSideProps } from 'next';
+import dynamic from 'next/dynamic';
+const Map = dynamic(() => import('@/components/Map'), { ssr: false });
 
 type PageProps = {
   error: boolean;
@@ -25,6 +27,7 @@ export const Home: React.FC<PageProps> = ({ error, data, ipAddress }) => {
       {error && <p>{errorMessage}</p>}
       <pre>{JSON.stringify(data, null, 2)}</pre>
       <section>{ipAddress}</section>
+      <Map />
     </main>
   );
 };
