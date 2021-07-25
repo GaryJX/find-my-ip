@@ -1,7 +1,4 @@
-@use 'mixins';
-
-/**************** Fonts ****************/
-/* nunito-400 - latin */
+/********** FONT FACES **********/
 @font-face {
   font-family: 'Nunito';
   font-style: normal;
@@ -10,7 +7,6 @@
   src: url('/fonts/nunito-400.woff2') format('woff2');
 }
 // TODO: Delete font-weight 600 if not used
-/* nunito-600 - latin */
 @font-face {
   font-family: 'Nunito';
   font-style: normal;
@@ -18,7 +14,6 @@
   font-display: optional;
   src: url('/fonts/nunito-600.woff2') format('woff2');
 }
-/* nunito-700 - latin */
 @font-face {
   font-family: 'Nunito';
   font-style: normal;

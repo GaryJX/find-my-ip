@@ -1,6 +1,9 @@
+import IPLookup from '@/components/IPLookup';
+import { Box, Flex } from '@chakra-ui/react';
 import axios from 'axios';
 import { GetServerSideProps } from 'next';
 import dynamic from 'next/dynamic';
+import React from 'react';
 const Map = dynamic(() => import('@/components/Map'), { ssr: false });
 
 type ApiResponseData = {
@@ -8,7 +11,7 @@ type ApiResponseData = {
   type: string;
   location: {
     latitude: number;
-    longitutde: number;
+    longitude: number;
   };
   area: {
     name: string;
@@ -39,13 +42,20 @@ type PageProps = {
 
 export const Home: React.FC<PageProps> = ({ error, data, ipAddress }) => {
   const errorMessage = 'Failed to retrieve information for your IP address. Please try again later.';
+
+  if (error) {
+    return <p>ERROR!</p>;
+  }
+
+  const { latitude, longitude } = data!.location;
+
   return (
-    <main id="main" style={{ height: '100vh', display: 'flex', flexDirection: 'column' }}>
-      {/* {error && <p>{errorMessage}</p>} */}
+    <main>
       {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
-      {/* <section>{ipAddress}</section> */}
-      <div style={{ height: '30vh', width: '100%', background: 'blue' }}></div>
-      <Map />
+      <Flex height="100vh" flexDirection="column">
+        <IPLookup />
+        <Map latitude={latitude} longitude={longitude} />
+      </Flex>
     </main>
   );
 };
