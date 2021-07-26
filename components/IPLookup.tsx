@@ -24,7 +24,7 @@ import { PuffLoader } from 'react-spinners';
 
 const IPLookup = () => {
   const [input, setInput] = useState('');
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [expandDetails, setExpandDetails] = useState(false);
   const { data, setData } = useContext(GlobalContext);
   const cancelTokenSource = useRef(axios.CancelToken.source());
@@ -74,6 +74,8 @@ const IPLookup = () => {
       return null;
     }
   }, [data]);
+  // Error exists if data is empty and not loading
+  const hasError = !data && !loading;
 
   useEffect(() => {
     setExpandDetails(false);
@@ -98,6 +100,7 @@ const IPLookup = () => {
         .catch((error) => {
           if (!axios.isCancel(error)) {
             console.error({ error });
+            setData(null);
             setLoading(false);
             // TODO: Proper error handling
           }
@@ -147,70 +150,76 @@ const IPLookup = () => {
         width={{ base: 'calc(100% - 4rem)', md: 'auto' }}
         maxWidth={{ base: '32.5rem', md: 'initial' }}
       >
-        {loading ? (
-          <Flex p="2rem 17.5rem">
-            <PuffLoader color="#4a40bf" />
+        {hasError && (
+          <Flex p="2.25rem 3.125rem" fontWeight="bold" fontSize="1.5rem">
+            Unable to find information for your IP address.
           </Flex>
-        ) : (
-          <>
-            <Flex direction={{ base: 'column', md: 'row' }} gridRowGap="0.25rem">
-              <Info title="IP Address" details={data?.ip} />
-              <Info title="ISP" details={isp} />
-              <Info title="Location" details={location} />
-              <Info title="Time Zone" details={timeZone} />
-            </Flex>
-            {data && (
-              <Box position="relative" width="100%" height="2.5rem">
-                <Flex
-                  position="absolute"
-                  background="white"
-                  top="0"
-                  left={{ base: '-1rem', md: '-2rem' }}
-                  right={{ base: '-1rem', md: '-2rem' }}
-                  p={{ base: '0 1rem 1rem', md: '0 2rem 2rem' }}
-                  flexDirection="column"
-                  boxShadow="lg"
-                  borderRadius={5}
-                >
-                  <Collapse in={expandDetails}>
-                    <Flex flexDirection="column" mb="2rem" gridGap="0.25rem">
-                      <ExpandedDetail title="IP Address Type" details={data.type} />
-                      <ExpandedDetail title="Latitude" details={data.location.latitude} />
-                      <ExpandedDetail title="Longitude" details={data.location.longitude} />
-                      <ExpandedDetail title="City" details={data.city.name} />
-                      <ExpandedDetail title="Region" details={data.area.name} />
-                      <ExpandedDetail
-                        title="Country"
-                        details={
-                          data.country.name ? (
-                            <Flex alignItems="center" gridGap="0.25rem">
-                              <p>{data.country.name}</p>
-                              {data.country.flag.file && (
-                                <Image src={data.country.flag.file} width={30} alt={`Flag of ${data.country.name}`} />
-                              )}
-                            </Flex>
-                          ) : null
-                        }
-                      />
-                      <ExpandedDetail title="Time Zone" details={data.time.timezone} />
-                    </Flex>
-                  </Collapse>
-                  <Button
-                    className="button"
-                    isFullWidth
-                    colorScheme="blue"
-                    onClick={() => setExpandDetails((prev) => !prev)}
-                  >
-                    <Flex alignItems="center" justifyContent="center" fontWeight="bold" flexDirection="column">
-                      <p>{expandDetails ? 'Hide' : 'Show'} details</p>
-                      {/* <ChevronDownIcon /> */}
-                    </Flex>
-                  </Button>
-                </Flex>
-              </Box>
-            )}
-          </>
         )}
+        {!hasError &&
+          (loading ? (
+            <Flex p="1.5rem 17.5rem">
+              <PuffLoader color="#4a40bf" />
+            </Flex>
+          ) : (
+            <>
+              <Flex direction={{ base: 'column', md: 'row' }} gridRowGap="0.25rem">
+                <Info title="IP Address" details={data?.ip} />
+                <Info title="ISP" details={isp} />
+                <Info title="Location" details={location} />
+                <Info title="Time Zone" details={timeZone} />
+              </Flex>
+              {data && (
+                <Box position="relative" width="100%" height="2.5rem">
+                  <Flex
+                    position="absolute"
+                    background="white"
+                    top="0"
+                    left={{ base: '-1rem', md: '-2rem' }}
+                    right={{ base: '-1rem', md: '-2rem' }}
+                    p={{ base: '0 1rem 1rem', md: '0 2rem 2rem' }}
+                    flexDirection="column"
+                    boxShadow="lg"
+                    borderRadius={5}
+                  >
+                    <Collapse in={expandDetails}>
+                      <Flex flexDirection="column" mb="2rem" gridGap="0.25rem">
+                        <ExpandedDetail title="IP Address Type" details={data.type} />
+                        <ExpandedDetail title="Latitude" details={data.location.latitude} />
+                        <ExpandedDetail title="Longitude" details={data.location.longitude} />
+                        <ExpandedDetail title="City" details={data.city.name} />
+                        <ExpandedDetail title="Region" details={data.area.name} />
+                        <ExpandedDetail
+                          title="Country"
+                          details={
+                            data.country.name ? (
+                              <Flex alignItems="center" gridGap="0.25rem">
+                                <p>{data.country.name}</p>
+                                {data.country.flag.file && (
+                                  <Image src={data.country.flag.file} width={30} alt={`Flag of ${data.country.name}`} />
+                                )}
+                              </Flex>
+                            ) : null
+                          }
+                        />
+                        <ExpandedDetail title="Time Zone" details={data.time.timezone} />
+                      </Flex>
+                    </Collapse>
+                    <Button
+                      className="button"
+                      isFullWidth
+                      colorScheme="blue"
+                      onClick={() => setExpandDetails((prev) => !prev)}
+                    >
+                      <Flex alignItems="center" justifyContent="center" fontWeight="bold" flexDirection="column">
+                        <p>{expandDetails ? 'Hide' : 'Show'} details</p>
+                        {/* <ChevronDownIcon /> */}
+                      </Flex>
+                    </Button>
+                  </Flex>
+                </Box>
+              )}
+            </>
+          ))}
       </Flex>
     </Flex>
   );
