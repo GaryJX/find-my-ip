@@ -16,10 +16,11 @@ type UpdateMapViewProps = {
 
 const UpdateMapView: React.FC<UpdateMapViewProps> = ({ latitude, longitude, zoom }) => {
   const map = useMap();
+  const { data } = useContext(GlobalContext);
 
   useEffect(() => {
     map.flyTo([latitude, longitude], zoom);
-  }, [latitude, longitude, zoom]);
+  }, [data, latitude, longitude, zoom]);
 
   return null;
 };
@@ -39,7 +40,7 @@ const Map: React.FC = () => {
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      <Marker position={[latitude, longitude]} />
+      {(latitude !== 0 || longitude !== 0) && <Marker position={[latitude, longitude]} />}
     </MapContainer>
   );
 };
