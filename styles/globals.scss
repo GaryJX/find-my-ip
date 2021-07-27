@@ -14,23 +14,13 @@
   src: url('/fonts/nunito-700.woff2') format('woff2');
 }
 
-// TODO: Clean up these classes
+/********** GENERAL CLASS STYLING **********/
 .image-bg {
-  // background-color: #f8f7fd;
-  // background-color: linear-gradient(to right, red, yellow);
   background-image: linear-gradient(to right, #4a40bf, #6186f5);
   // TODO: Self host this image
   background-image: url('https://www.transparenttextures.com/patterns/cartographer.png'),
     linear-gradient(to right, #4a40bf, #6186f5);
   /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
-}
-
-.button {
-  background-image: linear-gradient(to right, #4a40bf, #6186f5) !important;
-
-  &:hover {
-    opacity: 0.8;
-  }
 }
 
 .info-container {
@@ -48,5 +38,13 @@
     & + & {
       border-left: solid 1px #ededed;
     }
+  }
+}
+
+.toggle-details-btn {
+  background-image: linear-gradient(to right, #4a40bf, #6186f5) !important;
+
+  &:hover {
+    opacity: 0.8;
   }
 }

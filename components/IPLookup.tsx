@@ -187,7 +187,7 @@ const IPLookup: React.FC = () => {
                       </Flex>
                     </Collapse>
                     <Button
-                      className="button"
+                      className="toggle-details-btn"
                       isFullWidth
                       colorScheme="blue"
                       onClick={() => setExpandDetails((prev) => !prev)}
