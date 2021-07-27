@@ -56,7 +56,6 @@ export const Home: React.FC<PageProps> = ({ error, responseData }) => {
   return (
     <GlobalContext.Provider value={{ data, setData }}>
       <main>
-        {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
         <Flex height="100vh" flexDirection="column">
           <IPLookup />
           <Map />
