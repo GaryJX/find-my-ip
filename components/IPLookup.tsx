@@ -1,33 +1,20 @@
-import {
-  Accordion,
-  AccordionPanel,
-  Box,
-  Button,
-  Collapse,
-  Flex,
-  Heading,
-  IconButton,
-  Image,
-  Input,
-} from '@chakra-ui/react';
-import { GlobalContext } from 'pages';
-import React, { useEffect, useRef, useState } from 'react';
-import { useMemo } from 'react';
-import { useContext } from 'react';
-import { ChevronDownIcon, SearchIcon } from '@chakra-ui/icons';
-import Info from './Info';
-import { FormEvent } from 'react';
-import axios from 'axios';
-import ExpandedDetail from './ExpandedDetail';
+import React, { FormEvent, useEffect, useRef, useState, useMemo, useContext } from 'react';
+import { Box, Button, Collapse, Flex, Heading, IconButton, Image, Input } from '@chakra-ui/react';
+import { SearchIcon } from '@chakra-ui/icons';
 import { PuffLoader } from 'react-spinners';
-// import Image from 'next/image';
+import axios from 'axios';
+import Info from '@/components/Info';
+import ExpandedDetail from '@/components/ExpandedDetail';
+import GlobalContext from '@/context/GlobalContext';
 
-const IPLookup = () => {
+const IPLookup: React.FC = () => {
+  const { data, setData } = useContext(GlobalContext);
+  const cancelTokenSource = useRef(axios.CancelToken.source());
+
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
   const [expandDetails, setExpandDetails] = useState(false);
-  const { data, setData } = useContext(GlobalContext);
-  const cancelTokenSource = useRef(axios.CancelToken.source());
+
   const isp = useMemo(() => {
     if (data) {
       const unformattedISP = data.asn.organisation;
@@ -63,7 +50,6 @@ const IPLookup = () => {
   const timeZone = useMemo(() => {
     if (data) {
       let utcOffset = data.time.time?.split(' ').pop()!;
-      console.log({ utcOffset });
 
       if (utcOffset) {
         return `UTC${utcOffset.slice(0, 3)}:${utcOffset.slice(3)}`;
@@ -87,22 +73,19 @@ const IPLookup = () => {
       setLoading(true);
       cancelTokenSource.current.cancel('User re-sent API request.');
       cancelTokenSource.current = axios.CancelToken.source();
-      console.log('@ sent');
       axios
         .get(`/api/ip/${input}`, {
           cancelToken: cancelTokenSource.current.token,
         })
         .then((response) => {
-          console.log({ response: response.data });
           setData(response.data);
           setLoading(false);
         })
         .catch((error) => {
           if (!axios.isCancel(error)) {
-            console.error({ error });
+            console.error(error);
             setData(null);
             setLoading(false);
-            // TODO: Proper error handling
           }
         });
     }
@@ -132,7 +115,6 @@ const IPLookup = () => {
             icon={<SearchIcon />}
           />
         </Flex>
-        {/* <img src={data?.country.flag.file} /> */}
       </form>
       <Flex
         className="search-results"
@@ -212,7 +194,6 @@ const IPLookup = () => {
                     >
                       <Flex alignItems="center" justifyContent="center" fontWeight="bold" flexDirection="column">
                         <p>{expandDetails ? 'Hide' : 'Show'} details</p>
-                        {/* <ChevronDownIcon /> */}
                       </Flex>
                     </Button>
                   </Flex>

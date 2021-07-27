@@ -1,12 +1,10 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import 'leaflet/dist/leaflet.css';
 import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css';
 import 'leaflet-defaulticon-compatibility';
 import { MapContainer, Marker, TileLayer, useMap } from 'react-leaflet';
-import { useContext } from 'react';
-import { GlobalContext } from 'pages';
-import { useEffect } from 'react';
 import { useMediaQuery } from '@chakra-ui/react';
+import GlobalContext from '@/context/GlobalContext';
 
 type UpdateMapViewProps = {
   latitude: number;

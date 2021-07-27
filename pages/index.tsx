@@ -4,49 +4,15 @@ import dynamic from 'next/dynamic';
 import { Flex } from '@chakra-ui/react';
 import axios from 'axios';
 import IPLookup from '@/components/IPLookup';
+import GlobalContext from '@/context/GlobalContext';
+import type { ApiResponseData } from '@/types/ApiResponseData';
+import CONFIG from '@/config/config';
 
 const Map = dynamic(() => import('@/components/Map'), { ssr: false });
-
-type ApiResponseData = {
-  ip: string;
-  type: string;
-  location: {
-    latitude: number;
-    longitude: number;
-  };
-  area: {
-    name: string;
-  };
-  asn: {
-    organisation: string;
-  };
-  city: {
-    name: string;
-  };
-  country: {
-    code: string;
-    name: string;
-    flag: {
-      file: string;
-    };
-  };
-  time: {
-    timezone: string;
-    time: string;
-  };
-};
 
 type PageProps = {
   responseData: ApiResponseData | null;
 };
-
-export const GlobalContext = React.createContext<{
-  data: ApiResponseData | null;
-  setData: (data: ApiResponseData | null) => void;
-}>({
-  data: null,
-  setData: () => {},
-});
 
 export const Home: React.FC<PageProps> = ({ responseData }) => {
   const [data, setData] = useState<ApiResponseData | null>(responseData);
@@ -70,9 +36,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context)
     let responseData: ApiResponseData | null = null;
 
     if (ipAddress) {
-      const response = await axios.get(
-        `https://api.getgeoapi.com/v2/ip/${ipAddress}?api_key=${process.env.IP_API_KEY}`
-      );
+      const response = await axios.get(`https://api.getgeoapi.com/v2/ip/${ipAddress}?api_key=${CONFIG.ipApiKey}`);
       responseData = response.data as ApiResponseData;
     }
 

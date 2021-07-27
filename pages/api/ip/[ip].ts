@@ -1,12 +1,13 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import axios from 'axios';
+import CONFIG from '@/config/config';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const { ip } = req.query;
 
   if (ip) {
     await axios
-      .get(`https://api.getgeoapi.com/v2/ip/${ip}?api_key=${process.env.IP_API_KEY}`)
+      .get(`https://api.getgeoapi.com/v2/ip/${ip}?api_key=${CONFIG.ipApiKey}`)
       .then((response) => {
         res.status(200).json(response.data);
       })
