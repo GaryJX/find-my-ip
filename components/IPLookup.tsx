@@ -148,7 +148,7 @@ const IPLookup = () => {
         zIndex="10001"
         boxShadow="lg"
         width={{ base: 'calc(100% - 4rem)', md: 'auto' }}
-        maxWidth={{ base: '32.5rem', md: 'initial' }}
+        maxWidth={{ base: '32.5rem', md: 'calc(100% - 4rem)' }}
       >
         {hasError && (
           <Flex p="2.25rem 3.125rem" fontWeight="bold" fontSize="1.5rem">
