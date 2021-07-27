@@ -8,9 +8,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     await axios
       .get(`https://api.getgeoapi.com/v2/ip/${ip}?api_key=${process.env.IP_API_KEY}`)
       .then((response) => {
-        console.log({ data: response.data });
-        console.log({ remoteAddress: req.socket.remoteAddress });
-        console.log({ forwardedIp: req.headers });
         res.status(200).json(response.data);
       })
       .catch((error) => {
