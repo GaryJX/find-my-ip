@@ -17,10 +17,7 @@
 /********** GENERAL CLASS STYLING **********/
 .image-bg {
   background-image: linear-gradient(to right, #4a40bf, #6186f5);
-  // TODO: Self host this image
-  background-image: url('https://www.transparenttextures.com/patterns/cartographer.png'),
-    linear-gradient(to right, #4a40bf, #6186f5);
-  /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+  background-image: url('/cartographer.png'), linear-gradient(to right, #4a40bf, #6186f5);
 }
 
 .info-container {
