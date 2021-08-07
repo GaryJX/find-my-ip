@@ -1,26 +1,12 @@
-<!-- TODO: Update README.md. Once done, make repo public -->
-<!--
-*** Thanks for checking out the Best-README-Template. If you have a suggestion
-*** that would make this better, please fork the repo and create a pull request
-*** or simply open an issue with the tag "enhancement".
-*** Thanks again! Now go create something AMAZING! :D
-***
-***
-***
-*** To avoid retyping too much info. Do a search and replace for the following:
-*** project_description
--->
-
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <h3 align="center">Find My IP Address</h3>
+  <h1 align="center">Find My IP</h3>
   <p align="center">
     A web application for finding public information regarding your IP address, including ISP, location, and time zone.
   </p>
-  <hr>
-</p>
   <img src="public/demo.jpg" style="border-radius: 4px;">
+</p>
 
 <!-- TABLE OF CONTENTS -->
 <details open="open">
