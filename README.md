@@ -14,24 +14,13 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-
   <h3 align="center">Find My IP Address</h3>
-
-  <img src="public/demo.jpg" style="border-radius: 4px;">
-
   <p align="center">
-    A web ap
-    <br />
-    <a href="https://github.com/GaryJX/find-my-ip"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/GaryJX/find-my-ip">View Demo</a>
-    ·
-    <a href="https://github.com/GaryJX/find-my-ip/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/GaryJX/find-my-ip/issues">Request Feature</a>
+    A web application for finding public information regarding your IP address, including ISP, location, and time zone.
   </p>
+  <hr>
 </p>
+  <img src="public/demo.jpg" style="border-radius: 4px;">
 
 <!-- TABLE OF CONTENTS -->
 <details open="open">
