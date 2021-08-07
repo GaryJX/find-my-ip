@@ -3,7 +3,7 @@
 <p align="center">
   <h1 align="center">Find My IP</h3>
   <p align="center">
-    A web application for finding public information regarding your IP address, including ISP, location, and time zone.
+    A web application for finding public information regarding your IP address, including ISP, location, and time zone. View live demo at <a href="https://garyjx-find-my-ip.vercel.app/" target="_blank">garyjx-find-my-ip.vercel.app</a>.
   </p>
   <img src="public/demo.jpg" style="border-radius: 4px;">
 </p>
