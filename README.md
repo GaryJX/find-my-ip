@@ -3,51 +3,57 @@
 <p align="center">
   <h1 align="center">Find My IP</h3>
   <p align="center">
-    A web application for finding public information regarding your IP address, including ISP, location, and time zone. 
-    <br>
-    View live demo at <b><a href="https://garyjx-find-my-ip.vercel.app/" target="_blank">garyjx-find-my-ip.vercel.app</a></b>.
   </p>
   <img src="public/demo.jpg" style="border-radius: 4px;">
 </p>
 
 <!-- ABOUT THE PROJECT -->
 
-## About The Project
+## About This Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+A web application for finding public information regarding your IP address, including ISP, location, and time zone. View live demo at <a href="https://garyjx-find-my-ip.vercel.app/" target="_blank">garyjx-find-my-ip.vercel.app</a>
 
-Here's a blank template to get started:
-**To avoid retyping too much info. Do a search and replace with your text editor for the following:**
-`project_title`, `project_description`
+#### Built With
 
-### Built With
-
-- []()
-- []()
-- []()
+- TypeScript
+- React
+- Next.js
+- [Geo Location IP API](https://getgeoapi.com/)
 
 <!-- GETTING STARTED -->
 
 ## Getting Started
 
-To get a local copy up and running follow these simple steps.
+#### Installation
 
-### Prerequisites
-
-This is an example of how to list things you need to use the software and how to install them.
-
-- npm
-  ```sh
-  npm install npm@latest -g
-  ```
-
-### Installation
-
-1. Clone the repo
+1. Clone the project repository.
    ```sh
    git clone https://github.com/GaryJX/find-my-ip.git
    ```
-2. Install NPM packages
+2. `cd` into the project root directory.
+   ```sh
+   cd find-my-ip
+   ```
+3. Install dependencies.
    ```sh
    npm install
    ```
+4. Create `.env.local` by copying the template file `.env.sample`.
+   ```sh
+   cp .env.sample .env.local
+   ```
+5. Go to https://getgeoapi.com/ to sign up for an account and get a free API key.
+   <br>
+6. Update `.env.local` with your API key.
+
+   ```
+   # .env.local
+
+   IP_API_KEY=<YOUR_API_KEY>
+   ```
+
+7. Start the development server.
+   ```sh
+   npm run dev
+   ```
+8. Open the application at http://localhost:3000/
