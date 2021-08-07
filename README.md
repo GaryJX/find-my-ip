@@ -16,7 +16,8 @@
 <p align="center">
 
   <h3 align="center">Find My IP Address</h3>
-  ![demo](https://raw.githubusercontent.com/GaryJX/find-my-ip)
+
+  <img src="public/demo.jpg" style="border-radius: 4px;">
 
   <p align="center">
     A web ap
