@@ -1,11 +1,8 @@
 <!-- PROJECT LOGO -->
-<br />
-<p align="center">
+<div align="center">
   <h1 align="center">Find My IP</h3>
-  <p align="center">
-  </p>
   <img src="public/demo.jpg" style="border-radius: 4px;">
-</p>
+</div>
 
 <!-- ABOUT THE PROJECT -->
 
