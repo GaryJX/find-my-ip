@@ -21,9 +21,9 @@ A web application for finding public information regarding your IP address, incl
 
 ## Getting Started
 
-#### Installation
+#### Installation and Set Up
 
-1. Clone the project repository.
+1. Clone the repository.
    ```sh
    git clone https://github.com/GaryJX/find-my-ip.git
    ```
