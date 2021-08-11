@@ -8,7 +8,7 @@
 
 ## About This Project
 
-A web application for finding public information regarding your IP address, including ISP, location, and time zone. View live demo at <a href="https://garyjx-find-my-ip.vercel.app/" target="_blank">garyjx-find-my-ip.vercel.app</a>
+A web application for finding public information regarding your IP address, including ISP, location, and time zone. View live demo at <a href="https://find-my-ip.garyxie.me/" target="_blank">find-my-ip.garyxie.me</a>
 
 #### Built With
 
